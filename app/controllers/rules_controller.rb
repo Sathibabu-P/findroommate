@@ -1,5 +1,5 @@
 class RulesController < ApplicationController
-    before_filter :authenticate_admin!
+  before_filter :authenticate_admin!
   layout 'admin'
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
 

@@ -24,27 +24,18 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            <li class="<%= is_active_controller('dashboards') %> treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                <li class="active"><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-              </ul>
+              
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href="/rooms">
                 <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
+                <span>Rooms</span>
                 <span class="label label-primary pull-right">4</span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-              </ul>
+              </a>             
             </li>
             <li>
               <a href="pages/widgets.html">
@@ -90,16 +81,16 @@
                 <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
               </ul>
             </li> -->
-            <li class="treeview">
+            <li class="<%= is_active_controller('datamanagement') %> treeview">
               <a href="#">
                 <i class="fa fa-table"></i> <span>Data Management</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                 <li><a href="/cities"><i class="fa fa-circle-o"></i> Cities </a></li>
-                <li><a href="/areas"><i class="fa fa-circle-o"></i> Areas </a></li>
-                <li><a href="/amenities"><i class="fa fa-circle-o"></i> Amenities</a></li>
-                 <li><a href="/rules"><i class="fa fa-circle-o"></i> Rules </a></li>
+                 <li class="<%= is_active_controller('cities') %>"><a href="/cities"><i class="fa fa-circle-o"></i> Cities </a></li>
+                <li class="<%= is_active_controller('areas') %>"><a href="/areas"><i class="fa fa-circle-o"></i> Areas </a></li>
+                <li class="<%= is_active_controller('amenities') %>"><a href="/amenities"><i class="fa fa-circle-o"></i> Amenities</a></li>
+                 <li class="<%= is_active_controller('rules') %>"><a href="/rules"><i class="fa fa-circle-o"></i> Rules </a></li>
                 
               </ul>
             </li>
