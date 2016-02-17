@@ -1,0 +1,87 @@
+
+
+
+        <div class="container container-pad" id="property-listings">
+            
+          <div class="page-header">
+  <%= link_to new_room_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Room
+  <% end %>
+  <h1>Listing rooms</h1>
+</div>
+
+            
+            <div class="row">
+             <!--  <div class="col-sm-2">
+              </div> -->
+                 <%= content_tag_for(:tr, @rooms) do |room| %>
+                <div class="col-sm-6"> 
+
+                    <!-- Begin Listing: 609 W GRAVERS LN-->
+                  
+                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                        <div class="media">
+                            <a class="pull-left" href="#" target="_parent">
+                            <img alt="image" class="img-responsive" ></a>
+
+                            <div class="clearfix visible-sm"></div>
+
+                            <div class="media-body fnt-smaller">
+                                <a href="#" target="_parent"></a>
+
+                                <h4 class="media-heading">
+                                  <%= link_to room.title, room %>
+                                </h4>
+
+
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>4,820 SqFt</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>5 Beds</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>5 Baths</li>
+                                </ul>
+
+                                <p class="hidden-xs">Situated between fairmount
+                                park and the prestigious philadelphia cricket
+                                club, this beautiful 2+ acre property is truly
+                                ...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Chestnut Hill
+                                Evergreen</span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                    
+                   
+                </div><!-- End Col -->
+                  <% end %>
+            </div><!-- End row -->
+        </div><!-- End container -->
+ 
+<!-- 
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Title</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%#= content_tag_for(:tr, @rooms) do |room| %>
+            <td><%#= room.title %></td>
+            <td><%#= link_to 'Show', room %></td>
+        <td><%#= link_to 'Edit', edit_room_path(room) %></td>
+        <td><%#= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%# end %>
+    </tbody>
+  </table>
+</div>
+ -->

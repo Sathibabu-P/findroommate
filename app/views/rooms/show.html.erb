@@ -1,0 +1,54 @@
+<!-- <div class="page-header">
+  <#%= link_to rooms_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <%# end %>
+  <#%= link_to edit_room_path(@room), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <%# end %>
+  <h1>Show room</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Title:</dt>
+  <dd><#%= @room.title %></dd>
+
+</dl>
+ -->
+ <div class="page-header" style="margin-top:120px" >
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-8">
+           <img alt="image" class="img-responsive" >
+        </div>
+        <div class="col-md-4">
+          <div class="row">
+            <div class="col-md-12">
+              <a class="btn btn-primary btn-lg header-subtitle" style="width:29%;">POST ROOM</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  
+<% unless @pictures.empty? %>
+  <% @pictures.each do |pic| %>
+    
+    <div class="thumbnail media">
+      <%= image_tag pic.attachment.url(:medium) %>    
+    </div>
+  
+  <% end %>
+<% end %>
+
+</div>
