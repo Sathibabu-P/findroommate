@@ -28,11 +28,11 @@
    <div class="form-group">
     <%= f.label :room_type, class: "col-sm-4 control-label" %>
     <div class="col-sm-6">
-    <%=select_tag "room_type", options_for_select([ "Flat", "House", "Single" ], "Single"),class: "form-control"%>
+    <%=select_tag "room[room_type]", options_for_select([ "Flat", "House", "Single" ],@room.room_type),class: "form-control"%>
 
     </div>
   </div>
-
+,@room.room_type
    <div class="form-group">
     <%= f.label :bedrooms, class: "col-sm-4 control-label" %>
     <div class="col-sm-6">
@@ -86,14 +86,14 @@
     <div class="form-group">
     <%= f.label :prefred_gender, class: "col-sm-4 control-label" %>
     <div class="col-sm-6">
-    <%=select_tag "prefred_gender", options_for_select([ "Male", "Female", "Doesn't matter" ], "Male"),class: "form-control"%>
+    <%=select_tag "room[prefred_gender]", options_for_select([ "Male", "Female", "Doesn't matter" ],@room.prefred_gender),class: "form-control"%>
 
     </div>
   </div>
     <div class="form-group">
     <%= f.label :prefred_occupation, class: "col-sm-4 control-label" %>
     <div class="col-sm-6">
-    <%=select_tag "prefred_occupation", options_for_select([ "Student", "Employee", "Doesn't matter" ], "Student"),class: "form-control"%>
+    <%=select_tag "room[prefred_occupation]", options_for_select([ "Student", "Employee", "Doesn't matter" ],@room.prefred_occupation),class: "form-control"%>
 
     </div>
   </div>
