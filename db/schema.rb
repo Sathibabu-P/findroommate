@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217150358) do
+ActiveRecord::Schema.define(version: 20160218161725) do
+
+  create_table "amenities", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "amenities_rooms", id: false, force: :cascade do |t|
+    t.integer "room_id",    limit: 4
+    t.integer "amenity_id", limit: 4
+  end
+
+  add_index "amenities_rooms", ["amenity_id"], name: "index_amenities_rooms_on_amenity_id", using: :btree
+  add_index "amenities_rooms", ["room_id"], name: "index_amenities_rooms_on_room_id", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "room_id",                 limit: 4
@@ -46,6 +60,20 @@ ActiveRecord::Schema.define(version: 20160217150358) do
 
   add_index "rooms", ["area_id"], name: "index_rooms_on_area_id", using: :btree
   add_index "rooms", ["user_id"], name: "index_rooms_on_user_id", using: :btree
+
+  create_table "rooms_rules", id: false, force: :cascade do |t|
+    t.integer "room_id", limit: 4
+    t.integer "rule_id", limit: 4
+  end
+
+  add_index "rooms_rules", ["room_id"], name: "index_rooms_rules_on_room_id", using: :btree
+  add_index "rooms_rules", ["rule_id"], name: "index_rooms_rules_on_rule_id", using: :btree
+
+  create_table "rules", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

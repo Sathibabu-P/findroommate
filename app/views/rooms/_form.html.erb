@@ -97,6 +97,30 @@
 
     </div>
   </div>
+
+  <div class="form-group">
+    <label class= "col-sm-4 control-label">Amenities</label>
+ 
+    <div class="col-sm-6">
+      
+    <%@amenities.each do |amenity|%>
+      <%= check_box_tag "room[amenity_ids][]", amenity.id, @room.amenities.include?(amenity) %>
+      <%= amenity.name %>
+      <%end%>
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label class= "col-sm-4 control-label">Rules</label>
+ 
+    <div class="col-sm-6">
+      <%@rules.each do |rule|%>
+       <%= check_box_tag "room[rule_ids][]", rule.id, @room.rules.include?(rule) %>
+      <%= rule.name %>
+      <%end%>
+
+    </div>
+  </div>
  
 
 <div class="form-group">

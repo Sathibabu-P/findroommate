@@ -16,10 +16,14 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    @amenities = Amenity.all
+    @rules =  Rule.all
   end
 
   # GET /rooms/1/edit
   def edit
+    @amenities = Amenity.all
+    @rules =  Rule.all
   end
 
   # POST /rooms
@@ -49,6 +53,8 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   # PATCH/PUT /rooms/1.json
   def update
+    params[:room][:rule_ids] ||= []
+    params[:room][:amenity_ids] ||= [] 
     respond_to do |format|
       if @room.update(room_params)
         format.html { redirect_to @room, notice: 'Room was successfully updated.' }
@@ -78,6 +84,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:title,:description,:room_type,:bedrooms,:bathrooms,:roomrent,:roomsfor_rent,:available_from,:minimumstay,:current_roommates,:prefred_gender,:prefred_age,:prefred_occupation,:phonenumber_visibility,:user_id,:area_id)
+      params.require(:room).permit(:title,:description,:room_type,:bedrooms,:bathrooms,:roomrent,:roomsfor_rent,:available_from,:minimumstay,:current_roommates,:prefred_gender,:prefred_age,:prefred_occupation,:phonenumber_visibility,:user_id,:area_id,:rule_ids => [],:amenity_ids => [])
     end
 end
