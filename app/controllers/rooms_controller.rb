@@ -21,9 +21,8 @@ class RoomsController < ApplicationController
   end
 
   # GET /rooms/1/edit
-  def edit
-    @amenities = Amenity.all
-    @rules =  Rule.all
+  def edit 
+    
   end
 
   # POST /rooms
@@ -57,7 +56,18 @@ class RoomsController < ApplicationController
     params[:room][:amenity_ids] ||= [] 
     respond_to do |format|
       if @room.update(room_params)
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+
+
+         if params[:pictures]
+        #===== The magic is here ;)
+          params[:pictures].each { |image|
+            @room.pictures.create(attachment: image)
+          }
+        end
+
+
+
+        format.html { redirect_to edit_room_path(@room), notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -76,10 +86,21 @@ class RoomsController < ApplicationController
     end
   end
 
+
+  def delpic
+    @pic = Picture.find(params[:pid])
+    @room = Room.find(params[:rid])
+    @pic.destroy
+    redirect_to edit_room_path(@room)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
       @room = Room.find(params[:id])
+      @amenities = Amenity.all
+      @rules =  Rule.all
+      @pictures = @room.pictures
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
