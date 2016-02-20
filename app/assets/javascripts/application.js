@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require owl.carousel
+//= require bootstrap-datepicker
 //= require_tree ../../../vendor/assets/javascripts/.

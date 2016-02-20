@@ -78,13 +78,56 @@
 
             <div class="panel panel-success">
           <div class="panel-heading">
-            <h3 class="panel-title">Panel title</h3>
+            <h3 class="panel-title">Related Listings</h3>
           </div>
           <div class="panel-body">
-            Panel content
+          <div class="owl-carousel">
+        <% unless @pictures.empty? %> 
+              <% Picture.all.each do |pic| %>                
+               
+
+      <div class="media">
+      <div class="thumbnail">
+      <%= image_tag pic.attachment.url(:thumb) %>   
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+          <p>...</p>        
+        </div>
+      </div>
+    </div>
+
+              <% end %>
+            <% end %>
+        
+        </div>
+
           </div>
         </div>
         
         </div>
        
  </div>
+
+<style type="text/css">
+
+.owl-carousel .item{
+  margin: 3px;
+}
+.owl-carousel .item img{
+  display: block;
+ 
+  height: auto;
+}
+.owl-carousel .owl-item img {
+  height: 50px !important;
+   width: 100% !important;
+}
+</style>
+
+<script type="text/javascript">
+$(".owl-carousel").owlCarousel({
+    items : 5,
+    lazyLoad : true,   
+    autoplay : true
+  });
+</script>

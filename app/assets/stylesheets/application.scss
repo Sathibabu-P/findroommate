@@ -12,6 +12,9 @@
  *
  *= require devise_bootstrap_views
  *= require room
+ *= require owl.carousel
+ *= require owl.theme
+ *= require bootstrap-datepicker3
  *= require_tree ../../../vendor/assets/stylesheets/.
  *= require_self
  */

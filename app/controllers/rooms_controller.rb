@@ -18,6 +18,7 @@ class RoomsController < ApplicationController
     @room = Room.new
     @amenities = Amenity.all
     @rules =  Rule.all
+    @pictures = @room.pictures
   end
 
   # GET /rooms/1/edit
@@ -28,7 +29,7 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(room_params)
+    @room =  Room.new(room_params)
 
     respond_to do |format|
       if @room.save
