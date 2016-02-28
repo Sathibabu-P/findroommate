@@ -24,17 +24,18 @@
           </div>
           <div class="panel-body">
 
+       <div class="demo">
+          <ul id="lightSlider">
             <% unless @pictures.empty? %>
-              <% @pictures.each do |pic| %>                
-                  <div class="col-xs-6 col-md-3">
-                  <a href="#" class="thumbnail">
-                  <%= image_tag pic.attachment.url(:thumb) %>   
-                   </a> 
-                </div>              
-              <% end %>
+              <% @pictures.each do |pic| %>  
+
+        <li data-thumb="<%=pic.attachment.url(:thumb) %>">
+            <img src="<%=pic.attachment.url(:medium) %> " />
+        </li>
+               <% end %>
             <% end %>
-
-
+            </ul>
+        </div>
            
           </div>
         </div>
@@ -122,6 +123,28 @@
   height: 50px !important;
    width: 100% !important;
 }
+
+.demo {
+    width:100%;
+}
+.demo ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin-bottom:0;
+}
+.demo li {
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor:pointer;
+}
+.demo img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+
 </style>
 
 <script type="text/javascript">
@@ -130,4 +153,13 @@ $(".owl-carousel").owlCarousel({
     lazyLoad : true,   
     autoplay : true
   });
+
+
+$('#lightSlider').lightSlider({
+    gallery: true,
+    item: 1,
+    loop: true,
+    slideMargin: 0,
+    thumbItem: 9
+});
 </script>
