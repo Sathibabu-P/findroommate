@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Starter Template for Bootstrap</title>
+  <title>FindRoomMate.com</title>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -34,8 +34,12 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><%= link_to "POST ROOM", new_room_path ,:style => "margin-top: 5px;margin-right:5px"%></li>
+						<% if user_signed_in? %>
+						<li class="active"><%= link_to "Logout", destroy_user_session_path,:style => "margin-top: 5px;", :method => :delete %></li>
+						<%else%>
 						<li class="active"><a href="/users/sign_in" style="margin-top: 5px;">login</a></li>
-						
+						<% end %>
 					</ul> <!-- /.nav -->
 			    </div><!-- /.navbar-collapse -->
 		  	</div><!-- /.container -->

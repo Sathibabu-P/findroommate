@@ -18,27 +18,32 @@
   
         <div class="col-md-8">
 
-          <div class="panel panel-default">
+         
+
+             <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Panel title</h3>
           </div>
           <div class="panel-body">
 
-       <div class="demo">
-          <ul id="lightSlider">
-            <% unless @pictures.empty? %>
-              <% @pictures.each do |pic| %>  
+           <div class="demo">
+              <ul id="lightSlider">
+                <% unless @pictures.empty? %>
+                  <% @pictures.each do |pic| %>  
 
-        <li data-thumb="<%=pic.attachment.url(:thumb) %>">
-            <img src="<%=pic.attachment.url(:medium) %> " />
-        </li>
-               <% end %>
-            <% end %>
-            </ul>
-        </div>
+            <li data-thumb="<%=pic.attachment.url(:thumb) %>">
+                <img src="<%=pic.attachment.url(:medium) %> " />
+            </li>
+                   <% end %>
+                <% end %>
+                </ul>
+            </div>
            
+            </div>
+       
           </div>
-        </div>
+
+         
 
           
          </div>
@@ -50,7 +55,7 @@
             <h3 class="panel-title">Panel title</h3>
           </div>
           <div class="panel-body">
-            Panel content
+           <%= rating_for @room, "features" %>
           </div>
         </div>
           
@@ -60,7 +65,8 @@
             <h3 class="panel-title">Panel title</h3>
           </div>
           <div class="panel-body">
-            Panel content
+            <%= link_to "Like", like_room_path , method: :put%>(<%=@room.get_upvotes.size%>)
+            <%= link_to "Unlike", dislike_room_path, method: :put %>(<%=@room.get_downvotes.size%>)
           </div>
         </div>
 
@@ -71,6 +77,51 @@
 
 
  </div>
+ <div class="row">
+   <div class="col-md-8">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Room Info</h3>
+          </div>
+          <div class="panel-body">
+            <h4 class="title" style="display: block">About the flatshare</h4>
+            <ul style="display: block;">
+              <li><%=@room.room_type%></li>
+              <li><%=@room.bedrooms%> bedrooms total</li>
+              <li><%=@room.rooms_forrent%> bedrooms available</li>
+              <li><%=@room.bathrooms%> bathrooms</li>
+              <li><%=@room.minimumstay%> months minimum stay</li>
+              <li>Available from <%=@room.available_from%> </li>
+             
+            </ul>
+             <h4 class="title" style="display: block">Ideal flatmates</h4>
+                  
+              <p><%=@room.prefred_gender%>, from <%=@room.prefred_age_from %> years old  to <%=@room.prefred_age_to %> <%=@room.prefred_occupation%> </p>  
+                <h4 class="title" style="display: block">Description</h4>
+                  
+              <p><%=@room.description%> </p>   
+
+            <h4 class="title" style="display: block">Amenities</h4>
+            <ul style="display: block;">
+            <%@room.amenities.each do |amenity| %>
+               <li><%=amenity.name%></li>
+            <%end%>  
+             
+            </ul>  
+
+            <h4 class="title" style="display: block">House Rules</h4>
+            <ul style="display: block;">
+            <%@room.rules.each do |rule| %>
+               <li><%=rule.name%></li>
+            <%end%>  
+             
+            </ul>          
+           
+          </div>
+        </div>
+   </div>
+</div>
 
  <div class="row">
   

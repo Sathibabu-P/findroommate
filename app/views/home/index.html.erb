@@ -17,7 +17,14 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li class=""><a href="/users/sign_in">login</a></li>
+						
+  						
+						<% if user_signed_in? %>
+						<li class="active"><%= link_to "Logout", destroy_user_session_path %></li>
+						<%else%>
+						<li class="active"><a href="/users/sign_in">login</a></li>
+						<% end %>
+						
 					</ul> <!-- /.nav -->
 			    </div><!-- /.navbar-collapse -->
 		  	</div><!-- /.container -->
@@ -28,8 +35,8 @@
 					<h1 class="header-title">
 						best digital agency
 					</h1>
-					<a class="btn btn-success btn-lg header-subtitle" href="#" style="width:29%;">FIND ROOM</a>
-					<a class="btn btn-primary btn-lg header-subtitle" style="width:29%;">POST ROOM</a>
+					<a class="btn btn-success btn-lg header-subtitle" href="/rooms" style="width:29%;">FIND ROOM</a>
+					<a class="btn btn-primary btn-lg header-subtitle" style="width:29%;" href="room/new">POST ROOM</a>
 
 				</div> <!-- /.header-wrapper -->
 			</div>

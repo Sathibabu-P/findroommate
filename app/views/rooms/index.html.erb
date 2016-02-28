@@ -4,10 +4,7 @@
         <div class="container container-pad" id="property-listings">
             
           <div class="page-header">
-  <%= link_to new_room_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Room
-  <% end %>
+
   <h1>Listing rooms</h1>
 </div>
 
@@ -49,7 +46,7 @@
                                     <li><%=room.bathrooms%> Bath(s)</li>
                                 </ul>
 
-                                 <li class="inline">Rooms for rent: <%=room.roomsfor_rent%> room(s)</li>
+                                 <li class="inline">Rooms for rent: <%=room.rooms_forrent%> room(s)</li>
                                  <li class="inline">Available  form: <%=room.available_from%></li>
                                  <li class="inline">Minimum Stay: <%=room.minimumstay%> month(s)</li>
 

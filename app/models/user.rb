@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
          has_many :rooms
+         ratyrate_rater
+         acts_as_voter
 end

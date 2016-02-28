@@ -17,4 +17,6 @@
 //= require bootstrap
 //= require owl.carousel
 //= require bootstrap-datepicker
+//= require jquery.raty
+//= require ratyrate
 //= require_tree ../../../vendor/assets/javascripts/.
