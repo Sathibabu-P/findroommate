@@ -18,16 +18,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= render 'shared/top_navbar' %>
-  <div class="container" style="min-height:508px">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <%= msg %>
-      <% end %>
-    <% end %>
+   <%= render 'shared/top_navbar' %>
+  <div class="container" style="min-height:508px;margin-top:55px">
+   
+   <div class="row">
 
-    <%= yield %>
+
+   		<div class="col-md-3" style="border:1px solid #ccc;min-height:508px">
+  		<div class="list-group">
+		  <a href="#" class="list-group-item active">
+		    Cras justo odio
+		  </a>
+		  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+		  <a href="#" class="list-group-item">Morbi leo risus</a>
+		  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+		  <a href="#" class="list-group-item">Vestibulum at eros</a>
+		</div>
+  	</div>
+  	<div class="col-md-9" style="border:1px solid #ccc">
+  		 <%= yield %>
+  	</div>
+
+
+   </div>
+  
+   
   </div>
 
   <!-- Footer -->

@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #37414F;padding-top: 0px !important; border-radius:0px">
+			<div class="container" >
+			<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header" >
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/" style="margin-left: -2px;margin-top: 3px;">SIGHT</a>
+				</div> <!-- /.navbar-header -->
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><%= link_to "POST ROOM", new_room_path ,:style => "margin-top: 5px;margin-right:5px"%></li>
+						<% if user_signed_in? %>
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.email%> <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				            <li><%= link_to "Update Profile", profile_path %></li>
+				            <li><a href="#">My Listings</a></li>
+				           	<li role="separator" class="divider"></li>
+				            <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+				          </ul>
+				        </li>
+						<!-- <li class="active"></li> -->
+						<%else%>
+						<li class="active"><a href="/users/sign_in" style="margin-top: 5px;">login</a></li>
+						<% end %>
+					</ul> <!-- /.nav -->
+			    </div><!-- /.navbar-collapse -->
+		  	</div><!-- /.container -->
+  </nav>

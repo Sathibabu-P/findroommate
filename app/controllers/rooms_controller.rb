@@ -101,12 +101,12 @@ class RoomsController < ApplicationController
 
   def upvote
     @room.upvote_from current_user
-    redirect_to rooms_path
+    redirect_to @room
   end
 
   def downvote
     @room.downvote_from current_user
-    redirect_to rooms_path
+    redirect_to @room
   end
 
   private
