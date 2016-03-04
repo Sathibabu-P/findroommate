@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228100934) do
+ActiveRecord::Schema.define(version: 20160304182037) do
 
   create_table "amenities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -53,6 +53,26 @@ ActiveRecord::Schema.define(version: 20160228100934) do
     t.integer  "attachment_file_size",    limit: 4
     t.datetime "attachment_updated_at"
   end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "first_name",           limit: 255
+    t.string   "last_name",            limit: 255
+    t.string   "phone_no",             limit: 255
+    t.string   "gender",               limit: 255
+    t.string   "dob",                  limit: 255
+    t.string   "occupation",           limit: 255
+    t.string   "address",              limit: 255
+    t.string   "myself",               limit: 255
+    t.integer  "user_id",              limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "rates", force: :cascade do |t|
     t.integer  "rater_id",      limit: 4
@@ -133,6 +153,14 @@ ActiveRecord::Schema.define(version: 20160228100934) do
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.boolean  "admin",                              default: false
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "phone_no",               limit: 255
+    t.string   "gender",                 limit: 255
+    t.string   "dob",                    limit: 255
+    t.string   "occupation",             limit: 255
+    t.string   "address",                limit: 255
+    t.string   "myself",                 limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
