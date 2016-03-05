@@ -19,12 +19,13 @@
   
    <div class="wrapper">
 
-  <%= render 'shared/adminnavbar' %>
+   <%= render 'shared/adminnavbar' if current_admin.present? %>
+   <%= render 'shared/sidemenu' if current_admin.present? %>
    <%#= render 'adminnavbar' %>
 
     <%= yield %>
     
-  <%= render 'shared/adminfooter' %>
+  <%= render 'shared/adminfooter' if current_admin.present? %>
     </div>
  
 </body>

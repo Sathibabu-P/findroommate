@@ -1,0 +1,61 @@
+
+      <!-- Content Wrapper. Contains page content -->
+       <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+           Area's
+            
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Data Management</a></li>
+            <li class="active">Areas</li>
+          </ol>
+        </section>
+             <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+           <div class="box">
+               
+                <div class="box-body">
+                  <table id="areas" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Pincode</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>City</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <%= content_tag_for(:tr, @areas) do |area| %>
+                            <td><%= area.name %></td>
+                            <td><%= area.pincode %></td>
+                            <td><%= area.latitude %></td>
+                            <td><%= area.longitude %></td>
+                            <td><%= area.city.name if area.city.present? %></td>
+                            <td><%#= link_to 'Show', area %>
+                          <%= link_to 'Edit', edit_area_path(area) %>
+                         <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+      </div><!-- /.content-wrapper -->
+       </div><!-- /.col -->
+          </div><!-- /.row -->
+        </section><!-- /.content -->
+<script type="text/javascript">
+
+      $( document ).ready(function() {
+     
+        $('#areas').DataTable();
+      });
+</script>
+    

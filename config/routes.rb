@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   
   
 
+  resources :amenities
+  resources :rules
+  resources :cities
+  resources :areas
+  devise_for :admins
   post '/rate' => 'rater#create', :as => 'rate'
 
   resources :rooms 

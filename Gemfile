@@ -38,6 +38,7 @@ gem 'ratyrate'
 gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.3.4'
 #gem 'bootstrap-material-design'
+gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'jquery-turbolinks'
 gem 'acts_as_votable', '~> 0.10.0'
 group :development, :test do

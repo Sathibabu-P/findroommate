@@ -20,7 +20,7 @@
 						
   						
 						<% if user_signed_in? %>
-						<li class="active"><%= link_to "Logout", destroy_user_session_path %></li>
+						<li class="active"><%= link_to "Logout", destroy_user_session_path , method: :delete%></li>
 						<%else%>
 						<li class="active"><a href="/users/sign_in">login</a></li>
 						<% end %>

@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304182037) do
+ActiveRecord::Schema.define(version: 20160305161605) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "email",              limit: 255, default: "", null: false
+    t.string   "encrypted_password", limit: 255, default: "", null: false
+    t.integer  "sign_in_count",      limit: 4,   default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip", limit: 255
+    t.string   "last_sign_in_ip",    limit: 255
+    t.integer  "failed_attempts",    limit: 4,   default: 0
+    t.string   "unlock_token",       limit: 255
+    t.datetime "locked_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
 
   create_table "amenities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -27,6 +44,16 @@ ActiveRecord::Schema.define(version: 20160304182037) do
   add_index "amenities_rooms", ["amenity_id"], name: "index_amenities_rooms_on_amenity_id", using: :btree
   add_index "amenities_rooms", ["room_id"], name: "index_amenities_rooms_on_room_id", using: :btree
 
+  create_table "areas", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "pincode",    limit: 255
+    t.string   "latitude",   limit: 255
+    t.string   "longitude",  limit: 255
+    t.integer  "city_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id",      limit: 4
     t.integer  "rateable_id",   limit: 4
@@ -34,6 +61,12 @@ ActiveRecord::Schema.define(version: 20160304182037) do
     t.float    "avg",           limit: 24,  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "overall_averages", force: :cascade do |t|
@@ -140,27 +173,18 @@ ActiveRecord::Schema.define(version: 20160304182037) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.boolean  "admin",                              default: false
-    t.string   "first_name",             limit: 255
-    t.string   "last_name",              limit: 255
-    t.string   "phone_no",               limit: 255
-    t.string   "gender",                 limit: 255
-    t.string   "dob",                    limit: 255
-    t.string   "occupation",             limit: 255
-    t.string   "address",                limit: 255
-    t.string   "myself",                 limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,0 +1,27 @@
+<%= simple_form_for(@area) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+  </div>
+   <div class="form-inputs">
+    <%= f.input :pincode %>
+  </div>
+   <div class="form-inputs">
+    <%= f.input :latitude %>
+  </div>
+   <div class="form-inputs">
+    <%= f.input :longitude %>
+  </div>
+
+   <div class="form-inputs">
+    <%=f.association :city %>
+  </div> 
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+
+   <%= link_to "Back",areas_path, class: 'btn btn-default'  %>    
+   
+<% end %>
