@@ -4,7 +4,7 @@
 </div>
 
 
-
+<%= link_to "Update", edit_room_path(@room) %> 
 
 
 <div class="row">
@@ -116,42 +116,7 @@
    </div>
 </div>
 
- <div class="row">
-  
-        <div class="col-md-12">
 
-
-            <div class="panel panel-success">
-          <div class="panel-heading">
-            <h3 class="panel-title">Related Listings</h3>
-          </div>
-          <div class="panel-body">
-          <div class="owl-carousel">
-        <% unless @pictures.empty? %> 
-              <% Picture.all.each do |pic| %>                
-               
-
-      <div class="media">
-      <div class="thumbnail">
-      <%= image_tag pic.attachment.url(:thumb) %>   
-        <div class="caption">
-          <h3>Thumbnail label</h3>
-          <p>...</p>        
-        </div>
-      </div>
-    </div>
-
-              <% end %>
-            <% end %>
-        
-        </div>
-
-          </div>
-        </div>
-        
-        </div>
-       
- </div>
 
 <style type="text/css">
 

@@ -12,6 +12,18 @@ class ProfilesController < ApplicationController
 		 redirect_to user_profile_path    
 	end
 
+	def delprofilepic
+		@profile = Profile.find(params[:id])
+		@profile.picture.destroy
+		redirect_to user_profile_path  
+	end
+
+	def uploadprofilepic
+		@profile = current_user.profile
+		@profile.picture.save
+		render :text => 'wow'
+	end
+
 	private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile

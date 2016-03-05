@@ -10,6 +10,8 @@ class UserDashboardController < ApplicationController
   	end
   end
 
+
+  
   def edit
   	@profile = current_user.profile 
   end

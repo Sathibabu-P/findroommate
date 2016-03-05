@@ -1,0 +1,176 @@
+<%= simple_form_for(@room, html: { class: "form-horizontal", role: "form" ,:multipart => true}, wrapper: :vertical_form, wrapper_mappings: {
+          check_boxes: :horizontal_radio_and_checkboxes,
+          radio_buttons: :horizontal_radio_and_checkboxes,
+          file: :horizontal_file_input,
+          boolean: :horizontal_boolean
+        }) do |f| %>
+  <% if @room.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h4>
+
+      <ul>
+      <% @room.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :title, class: "form-control" %>
+    </div>
+  </div>
+   <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :description, class: "form-control" %>
+    </div>
+  </div>
+
+   <div class="form-group">
+    
+    <div class="col-sm-10">
+
+       <%= f.input :room_type, collection: [ "Flat", "House", "Single" ], prompt: "Select Room Type", selected: @room.room_type %>  
+
+    </div>
+  </div>
+
+   <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :bedrooms, class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :bathrooms, class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :roomrent, class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :rooms_forrent, class: "form-control" %>
+    </div>
+  </div>
+ 
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :available_from, class: "form-control datepicker" %>
+
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+
+       <%= f.input :minimumstay, class: "form-control" %> 
+     
+      
+     
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+      <%= f.input :current_roommates, class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-5">
+      <%= f.input :prefred_age_from, class: "form-control" %>
+    </div>
+ 
+    <div class="col-sm-5">
+      <%= f.input :prefred_age_to, class: "form-control" %>
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+
+        <%= f.input :prefred_gender, collection: [  "Male", "Female", "Doesn't matter" ], prompt: "Select Room Type", selected: @room.prefred_gender %>  
+
+   
+
+    </div>
+  </div>
+    <div class="form-group">
+    
+    <div class="col-sm-10">
+
+         <%= f.input :prefred_occupation, collection: [  "Student", "Employee", "Doesn't matter" ], prompt: "Select Room Type", selected: @room.prefred_occupation %>    
+
+    </div>
+  </div>
+
+  <div class="form-group">   
+    <div class="col-sm-10">
+      <%=f.association :amenities ,as: :check_boxes%>
+  
+    </div>
+  </div>
+
+    <div class="form-group">
+    <div class="col-sm-10">
+      <%=f.association :rules , as: :check_boxes %>
+         </div>
+  </div>
+ 
+
+<div class="form-group">
+    
+     <div class="col-sm-10">    
+      <%= file_field_tag "pictures[]", type: :file, multiple: true, class: "form-control"%>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+     <% unless @pictures.empty? %>
+        <% @pictures.each do |pic| %>                
+            <div class="col-xs-4 col-md-2">
+            <span class="thumbnail">
+            <%= image_tag pic.attachment.url(:thumb) %>  
+            <%= link_to 'DEL',  delpic_path(:pid => pic.id,:rid => @room.id),  method: :delete, data: { confirm: 'Are you sure?' } %>
+           
+             </span> 
+          </div>              
+        <% end %>
+      <% end %>
+  </div>
+ 
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-10">
+      <%= f.button :submit ,class: "btn btn-primary"%>
+   
+    </div>
+  </div>
+<% end %>
+
+
+
+ <script type="text/javascript">
+ var nowDate = new Date();
+ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+  $(document).ready(function(){
+    $('#room_available_from').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight:'TRUE',
+      autoclose: true,
+      startDate: today 
+    });
+  });
+</script>

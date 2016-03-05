@@ -10,8 +10,17 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center">
-                <%= link_to image_tag(@profile.picture.url, class: 'img-circle img-responsive')%>
+                  <a href="javascript:void(0)" id="uploadIcon">
+                    <%=image_tag(@profile.picture.url(:thumb), class: 'img-circle img-responsive')%>
+                  </a>
+                
+                <form id="UserProfile" method="post" enctype="multipart/form-data">
+                   <input type="file" value="upload" id="uploadFile" class="uploadFile" />
+                </form>
 
+                 
+                <%= link_to 'DEL',  delete_profile_pic_path(:id => @profile.id),  method: :delete, data: { confirm: 'Are you sure?' } %>
+              
                 </div>  
               
                 <div class=" col-md-9 col-lg-9 "> 
@@ -66,39 +75,71 @@
           </div>
         </div>
       </div>
-
-      <script type="text/javascript">
+<style type="text/css">
       .user-row {
-		    margin-bottom: 14px;
-		}
+        margin-bottom: 14px;
+    }
 
-		.user-row:last-child {
-		    margin-bottom: 0;
-		}
+    .user-row:last-child {
+        margin-bottom: 0;
+    }
 
-		.dropdown-user {
-		    margin: 13px 0;
-		    padding: 5px;
-		    height: 100%;
-		}
+    .dropdown-user {
+        margin: 13px 0;
+        padding: 5px;
+        height: 100%;
+    }
 
-		.dropdown-user:hover {
-		    cursor: pointer;
-		}
+    .dropdown-user:hover {
+        cursor: pointer;
+    }
 
-		.table-user-information > tbody > tr {
-		    border-top: 1px solid rgb(221, 221, 221);
-		}
+    .table-user-information > tbody > tr {
+        border-top: 1px solid rgb(221, 221, 221);
+    }
 
-		.table-user-information > tbody > tr:first-child {
-		    border-top: 0;
-		}
+    .table-user-information > tbody > tr:first-child {
+        border-top: 0;
+    }
 
 
-		.table-user-information > tbody > tr > td {
-		    border-top: 0;
-		}
-		.toppad
-		{margin-top:20px;
-		}
-      </script>
+    .table-user-information > tbody > tr > td {
+        border-top: 0;
+    }
+    .toppad
+    {margin-top:20px;
+    }
+.uploadFile {
+   visibility : hidden;
+}
+</style>
+
+<script type="text/javascript">
+$("#uploadIcon").click(function(){
+        $(this).next().find('input').trigger('click');
+    });
+ $('#uploadFile').change(function(evt) {
+        // alert($(this).val());
+
+        // evt.preventDefault();
+         var formData = new FormData($('#UserProfile')[0]);
+        // var formData = new FormData();
+        // jQuery.each(jQuery('#uploadFile')[0].files, function(i, file) {
+        //     formData.append('file-'+i, file);
+        // });
+
+         $.ajax({
+           url: '/profilepic_upload',
+           type: 'POST',
+           data: formData,
+           enctype: 'multipart/form-data',
+           processData: false,
+           success: function (response) {
+             window.location.reload();
+           }
+         });
+
+       return false;
+
+  });
+</script>

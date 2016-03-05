@@ -1,0 +1,75 @@
+
+
+
+        <div class="container container-pad" id="property-listings">
+            
+          <div class="page-header">
+
+  <h1>Listing rooms</h1>
+</div>
+
+            
+            <div class="row">
+             <!--  <div class="col-sm-2">
+              </div> -->
+                 <%= content_tag_for(:tr, @rooms) do |room| %>
+                <div class="col-sm-6"> 
+
+                    <!-- Begin Listing: 609 W GRAVERS LN-->
+                    <% @pic = room.pictures.last%>     
+                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                        <div class="media">
+                            <a class="pull-left" href="<%=listing_path(:id => room.id)%>">
+                          
+                         <%=  image_tag @pic.attachment.url(:thumb),:class =>"thumbnail"  if @pic.present?  %>   </a>
+
+                            <div class="clearfix visible-sm"></div>
+
+                            <div class="media-body fnt-smaller">
+                                <a href="#" target="_parent"></a>
+
+                                <h4 class="media-heading">
+                                  <%= link_to room.title, listing_path(:id => room.id) %>
+                                </h4>
+
+
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li><%=room.roomrent%> per month</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li><%=room.bedrooms%> Bedroom(s)</li>
+
+                                   
+                                    <li style="list-style: none">|</li>
+
+                                    <li><%=room.bathrooms%> Bath(s)</li>
+                                </ul>
+
+                                 <li class="inline">Rooms for rent: <%=room.rooms_forrent%> room(s)</li>
+                                 <li class="inline">Available  form: <%=room.available_from%></li>
+                                 <li class="inline">Minimum Stay: <%=room.minimumstay%> month(s)</li>
+
+                                 <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>Views</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>likes</li>
+
+                                   
+                                    <li style="list-style: none">|</li>
+
+                                    <li>Rating</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                    
+                   
+                </div><!-- End Col -->
+                  <% end %>
+            </div><!-- End row -->
+        </div><!-- End container -->
+ 
+

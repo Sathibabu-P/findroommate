@@ -1,10 +1,11 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_filter :authenticate_user!, only: [:new,:create,:update,:edit,:destroy]
+  before_filter :authenticate_user!
+  layout 'profile'
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = current_user.rooms
     #@rooms = current_user.rooms if current_user.present?
   end
 
@@ -69,7 +70,7 @@ class RoomsController < ApplicationController
 
 
 
-        format.html { redirect_to edit_room_path(@room), notice: 'Room was successfully updated.' }
+        format.html { redirect_to room_path(@room), notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
@@ -99,15 +100,7 @@ class RoomsController < ApplicationController
   end
 
 
-  def upvote
-    @room.upvote_from current_user
-    redirect_to @room
-  end
-
-  def downvote
-    @room.downvote_from current_user
-    redirect_to @room
-  end
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.
