@@ -23,6 +23,12 @@ class CitiesController < ApplicationController
   def edit
   end
 
+
+  def import
+    City.import(params[:file])
+    redirect_to cities_path
+  end
+
   # POST /cities
   # POST /cities.json
   def create

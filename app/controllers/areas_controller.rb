@@ -1,5 +1,5 @@
 class AreasController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, except: [:list]
   layout 'admin'
   before_action :set_area, only: [:show, :edit, :update, :destroy]
 

@@ -31,8 +31,8 @@ class AdminRoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room =  Room.new(room_params)
-    #@room = current_user.rooms.build(room_params)
+    #@room =  Room.new(room_params)
+    @room = current_admin.rooms.build(room_params)
     respond_to do |format|
       if @room.save
 
@@ -113,6 +113,6 @@ class AdminRoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:title,:description,:room_type,:bedrooms,:bathrooms,:roomrent,:rooms_forrent,:available_from,:minimumstay,:current_roommates,:prefred_gender,:prefred_age_from, :prefred_age_to,:prefred_occupation,:phonenumber_visibility,:user_id,:area_id,:rule_ids => [],:amenity_ids => [])
+      params.require(:room).permit(:title,:description,:room_type,:bedrooms,:bathrooms,:roomrent,:rooms_forrent,:available_from,:minimumstay,:current_roommates,:prefred_gender,:city_id, :prefred_age,:prefred_occupation,:phonenumber_visibility,:user_id,:area_id,:rule_ids => [],:amenity_ids => [])
     end
 end

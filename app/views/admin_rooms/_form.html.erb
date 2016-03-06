@@ -82,6 +82,18 @@
       <%= link_to "Back",admin_rooms_path, class: 'btn btn-default'  %>   
  </div>
 <script>
+
+ var nowDate = new Date();
+ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(), 0, 0, 0, 0);
+  $(document).ready(function(){
+    $('#room_available_from').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight:'TRUE',
+      autoclose: true,
+      startDate: today 
+    });
+  });
+  
   $(document).ready(function() {
     $('#room_city_id').change(function() {     
       $.ajax({

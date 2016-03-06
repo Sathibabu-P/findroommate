@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :amenities
   resources :rules
-  resources :cities
+  resources :cities do
+    collection { post :import }
+  end
   resources :areas
   
   resources :user_dashboard

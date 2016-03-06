@@ -19,7 +19,7 @@
            <div class="box">
                
                 <div class="box-body">
-                  <%= simple_form_for(@room,:url => url_for(:action => 'update', :controller => 'admin_rooms'),:method => :put,:validate => true) do |form| %>
+                  <%= simple_form_for(@room,:url => url_for(:action => 'update', :controller => 'admin_rooms'),:method => :put,:validate => true,html: {:multipart => true}) do |form| %>
                     <%= render 'form' , f: form %>
                     <% end %>
 

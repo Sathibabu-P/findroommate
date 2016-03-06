@@ -15,6 +15,17 @@
             <li class="active">Cities</li>
           </ol>
         </section>
+
+
+
+        <h2>Import Cities</h2>
+        <%= form_tag import_cities_path, multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Import" %>
+        <% end %>
+
+
+
              <!-- Main content -->
         <section class="content">
           <div class="row">

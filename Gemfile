@@ -43,7 +43,8 @@ gem 'jquery-turbolinks'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
-
+gem 'roo'
+gem "iconv", "~> 1.0.3"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
