@@ -41,6 +41,9 @@ gem 'bootstrap-generators', '~> 3.3.4'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'jquery-turbolinks'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -144,18 +144,21 @@ ActiveRecord::Schema.define(version: 20160305161605) do
     t.string   "minimumstay",            limit: 255
     t.string   "current_roommates",      limit: 255
     t.string   "prefred_gender",         limit: 255
-    t.string   "prefred_age_from",       limit: 255
-    t.string   "prefred_age_to",         limit: 255
+    t.string   "prefred_age",            limit: 255
     t.string   "prefred_occupation",     limit: 255
     t.boolean  "phonenumber_visibility"
     t.boolean  "status",                             default: false
     t.integer  "user_id",                limit: 4
+    t.integer  "admin_id",               limit: 4
+    t.integer  "city_id",                limit: 4
     t.integer  "area_id",                limit: 4
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end
 
+  add_index "rooms", ["admin_id"], name: "index_rooms_on_admin_id", using: :btree
   add_index "rooms", ["area_id"], name: "index_rooms_on_area_id", using: :btree
+  add_index "rooms", ["city_id"], name: "index_rooms_on_city_id", using: :btree
   add_index "rooms", ["user_id"], name: "index_rooms_on_user_id", using: :btree
 
   create_table "rooms_rules", id: false, force: :cascade do |t|

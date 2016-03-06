@@ -20,4 +20,6 @@
 //= require bootstrap-datepicker
 //= require jquery.raty
 //= require ratyrate
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree ../../../vendor/assets/javascripts/.

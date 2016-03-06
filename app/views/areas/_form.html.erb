@@ -1,4 +1,4 @@
-<%= simple_form_for(@area) do |f| %>
+<%= simple_form_for(@area,:validate => true) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -20,8 +20,9 @@
 
   <div class="form-actions">
     <%= f.button :submit %>
+     <%= link_to "Back",areas_path, class: 'btn btn-default'  %>
   </div>
 
-   <%= link_to "Back",areas_path, class: 'btn btn-default'  %>    
+      
    
 <% end %>

@@ -18,4 +18,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree ../../../vendor/assets/admin/javascripts/.

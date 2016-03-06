@@ -9,6 +9,16 @@ class AreasController < ApplicationController
     @areas = Area.all
   end
 
+
+  def list
+    @city = City.where(:id => params[:city_id]).first    
+    if @city.present?
+        @areas = @city.areas.map{|s| [s.name, s.id]}.insert(0, "Select a Area") 
+    else
+        @areas = Area.all.map{|s| [s.name, s.id]}.insert(0, "Select a Area")
+    end
+  end
+
   # GET /areas/1
   # GET /areas/1.json
   def show

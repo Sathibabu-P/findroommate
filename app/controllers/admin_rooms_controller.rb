@@ -1,11 +1,11 @@
-class RoomsController < ApplicationController
+class AdminRoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_filter :authenticate_user!
-  layout 'profile'
+  before_filter :authenticate_admin!
+  layout 'admin'
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = current_user.rooms
+    @rooms = Room.all
     #@rooms = current_user.rooms if current_user.present?
   end
 
@@ -25,14 +25,14 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1/edit
   def edit 
-     authorize! :edit, @room
+     #authorize! :edit, @room
   end
 
   # POST /rooms
   # POST /rooms.json
   def create
-    # @room =  Room.new(room_params)
-    @room = current_user.rooms.build(room_params)
+    @room =  Room.new(room_params)
+    #@room = current_user.rooms.build(room_params)
     respond_to do |format|
       if @room.save
 
@@ -43,7 +43,7 @@ class RoomsController < ApplicationController
           }
         end
 
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to admin_rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
@@ -70,14 +70,14 @@ class RoomsController < ApplicationController
 
 
 
-        format.html { redirect_to room_path(@room), notice: 'Room was successfully updated.' }
+        format.html { redirect_to admin_rooms_path, notice: 'Room was successfully updated.' }
         format.json { render :show, status: :ok, location: @room }
       else
         format.html { render :edit }
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
     end
-    authorize! :edit, @room
+    #authorize! :edit, @room
   end
 
   # DELETE /rooms/1
@@ -85,10 +85,10 @@ class RoomsController < ApplicationController
   def destroy
     @room.destroy
     respond_to do |format|
-      format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }
+      format.html { redirect_to admin_rooms_url, notice: 'Room was successfully destroyed.' }
       format.json { head :no_content }
     end
-     authorize! :edit, @room
+     #authorize! :edit, @room
   end
 
 
@@ -96,7 +96,7 @@ class RoomsController < ApplicationController
     @pic = Picture.find(params[:pid])
     @room = Room.find(params[:rid])
     @pic.destroy
-    redirect_to edit_room_path(@room)
+    redirect_to edit_admin_room_path(@room)
   end
 
 
@@ -113,6 +113,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:title,:description,:room_type,:bedrooms,:bathrooms,:roomrent,:rooms_forrent,:available_from,:minimumstay,:current_roommates,:prefred_gender,:prefred_age, :prefred_occupation,:phonenumber_visibility,:user_id,:area_id,:rule_ids => [],:amenity_ids => [])
+      params.require(:room).permit(:title,:description,:room_type,:bedrooms,:bathrooms,:roomrent,:rooms_forrent,:available_from,:minimumstay,:current_roommates,:prefred_gender,:prefred_age_from, :prefred_age_to,:prefred_occupation,:phonenumber_visibility,:user_id,:area_id,:rule_ids => [],:amenity_ids => [])
     end
 end

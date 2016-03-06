@@ -4,13 +4,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-           Area's
+           Rooms
             
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Data Management</a></li>
-            <li class="active">Areas</li>
+            <li class="active">Rooms</li>
           </ol>
         </section>
              <!-- Main content -->
@@ -18,33 +18,33 @@
           <div class="row">
             <div class="col-xs-12">
            <div class="box">
-                 <%= link_to new_area_path, class: 'btn btn-primary' do %>
+                 <%= link_to new_admin_room_path, class: 'btn btn-primary' do %>
                 <span class="glyphicon glyphicon-plus"></span>
                 New Room
               <% end %>
                 <div class="box-body">
-                  <table id="areas" class="table table-bordered table-striped">
+                  <table id="rooms" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Pincode</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
+                        <th>Tilte</th>
+                        <th>Available Form</th>
                         <th>City</th>
+                        <th>Room Type</th>
+                        <th>User</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      <%= content_tag_for(:tr, @areas) do |area| %>
-                            <td><%= area.name %></td>
-                            <td><%= area.pincode %></td>
-                            <td><%= area.latitude %></td>
-                            <td><%= area.longitude %></td>
-                            <td><%= area.city.name if area.city.present? %></td>
+                      <%= content_tag_for(:tr, @rooms) do |room| %>
+                            <td><%= room.title %></td>
+                            <td><%= room.description %></td>
+                            <td><%= room.room_type %></td>
+                            <td><%= room.bedrooms %></td>
+                            <td><%= room.bathrooms %></td>
                             <td><%#= link_to 'Show', area %>
-                          <%= link_to 'Edit', edit_area_path(area) %>
-                         <%= link_to 'Destroy', area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                          <%= link_to 'Edit', edit_admin_room_path(room) %>
+                         <%= link_to 'Destroy', admin_room_path(room), method: :delete, data: { confirm: 'Are you sure?' } %></td>
                       <% end %>
                     </tbody>
                   </table>
@@ -58,7 +58,7 @@
 
       $( document ).ready(function() {
      
-        $('#areas').DataTable();
+        $('#rooms').DataTable();
       });
 </script>
     
